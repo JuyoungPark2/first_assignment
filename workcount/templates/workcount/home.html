@@ -1,8 +1,18 @@
-<h1>WORD COUNT</h1>
-<a href="{% url 'about' %}">ABOUT</a>
+{% extends "base_generic.html" %}
 
-<form action="{% url 'count' %}">
-  <textarea name="fulltext" id="" cols="30" rows="10"></textarea>
+{% block title %}
+<title>Home page</title>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center mb-3" style="color:coral;">WORD COUNT</h1>
+
+<form class="text-right" action="{% url 'count' %}">
+  <textarea class="form-control" name="fulltext" id="" cols="30" rows="10"></textarea>
   <br>
-  <input type="submit" value="Count!">
+  <input class="btn btn-warning" type="submit" value="Count!">
+  <a class="d-block mt-3" style="color:coral;" href="{% url 'about' %}">ABOUT</a>
 </form>
+
+{% endblock %}

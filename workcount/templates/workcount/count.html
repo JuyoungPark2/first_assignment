@@ -1,10 +1,23 @@
-<h1>당신이 입력한 텍스트는 {{ total }}단어로 구성되어 있습니다.</h1>
+{% extends 'base_generic.html' %}
 
-<a href="{% url 'home' %}">다시하기</a>
+{% block title %}
+<title>Home page</title>
+{% endblock %}
 
-<h1>입력한 텍스트 : </h1>
-{{ fulltext }}
-<h1>단어 카운트 :</h1>
-{% for word, total_count in dictionary %}
-<p>{{ word }} - {{ total_count }}</p>
-{% endfor %}
+{% block content%}
+<h1 class="text-center mb-5" style="color:coral;">당신이 입력한 텍스트는 <span style="color:lawngreen;">{{ total }}</span>단어로
+  구성되어
+  있습니다.</h1>
+
+<ul class="list-group" style="width:800px; margin:0 auto;">
+  <li class="list-group-item text-center" style="background-color:coral; color:white; font-size: 36px;">입력한 텍스트</li>
+  <li class="list-group-item text-center" style="font-size:20px;">{{ fulltext }}</li>
+  <li class="list-group-item text-center" style="background-color:coral; color:white; font-size: 36px;">단어 카운트</li>
+  {% for word, total_count in dictionary %}
+  <li class="list-group-item text-center" style="font-size:20px;">{{ word }} - {{ total_count }}</li>
+  {% endfor %}
+</ul>
+
+<a class="text-center d-block mt-5" style="color:coral; font-size:30px;" href="{% url 'home' %}">다시하기</a>
+
+{% endblock %}
